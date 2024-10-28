@@ -130,7 +130,7 @@ public class FluidText implements Text {
     public TextContent getContent() {
         StringBuilder builder = new StringBuilder();
         rawTexts.forEach(text -> builder.append(text.getString()));
-        return new PlainTextContent.Literal(builder.toString());
+        return new LiteralTextContent(builder.toString());
     }
 
     /**

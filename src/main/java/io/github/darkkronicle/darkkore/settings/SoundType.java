@@ -2,7 +2,7 @@ package io.github.darkkronicle.darkkore.settings;
 
 import io.github.darkkronicle.darkkore.config.options.OptionListEntry;
 import lombok.Getter;
-import net.minecraft.block.enums.NoteBlockInstrument;
+import net.minecraft.block.enums.Instrument;
 
 import java.util.List;
 
@@ -15,21 +15,21 @@ public enum SoundType implements OptionListEntry<SoundType> {
     NORMAL("normal", null),
 
     /** Chime sounds */
-    CHIME("chime", NoteBlockInstrument.CHIME),
+    CHIME("chime", Instrument.CHIME),
 
     /** Bit sounds */
-    BIT("bit", NoteBlockInstrument.BIT),
+    BIT("bit", Instrument.BIT),
 
     /** Vibraphone sounds */
-    VIBRAPHONE("vibraphone", NoteBlockInstrument.IRON_XYLOPHONE)
+    VIBRAPHONE("vibraphone", Instrument.IRON_XYLOPHONE)
     ;
 
     private final String key;
 
     @Getter
-    private final NoteBlockInstrument instrument;
+    private final Instrument instrument;
 
-    SoundType(String key, NoteBlockInstrument instrument) {
+    SoundType(String key, Instrument instrument) {
         this.key = key;
         this.instrument = instrument;
     }

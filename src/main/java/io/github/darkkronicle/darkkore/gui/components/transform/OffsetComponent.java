@@ -74,11 +74,11 @@ public abstract class OffsetComponent extends WrapperComponent {
 
     /** {@inheritDoc} */
     @Override
-    public boolean mouseScrolled(int x, int y, int mouseX, int mouseY, double amountX, double amountY) {
+    public boolean mouseScrolled(int x, int y, int mouseX, int mouseY, double amount) {
         if (isHovered()) {
             int offX = this.getXOffset();
             int offY = this.getYOffset();
-            return component.mouseScrolled(x + offX, y + offY, mouseX, mouseY, amountX, amountY);
+            return component.mouseScrolled(x + offX, y + offY, mouseX, mouseY, amount);
         }
         return false;
     }

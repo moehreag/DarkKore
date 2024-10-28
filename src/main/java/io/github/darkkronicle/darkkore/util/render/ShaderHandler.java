@@ -1,8 +1,8 @@
 package io.github.darkkronicle.darkkore.util.render;
 
 import io.github.darkkronicle.darkkore.DarkKore;
-import org.ladysnake.satin.api.managed.ManagedCoreShader;
-import org.ladysnake.satin.api.managed.ShaderEffectManager;
+import ladysnake.satin.api.managed.ManagedCoreShader;
+import ladysnake.satin.api.managed.ShaderEffectManager;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.util.Identifier;
 
