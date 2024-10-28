@@ -96,11 +96,11 @@ public class ScrollComponent extends OffsetComponent {
 
     /** {@inheritDoc} */
     @Override
-    public boolean mouseScrolled(int x, int y, int mouseX, int mouseY, double amount) {
-        if (super.mouseScrolled(x, y, mouseX, mouseY, amount)) {
+    public boolean mouseScrolled(int x, int y, int mouseX, int mouseY, double amountX, double amountY) {
+        if (super.mouseScrolled(x, y, mouseX, mouseY, amountX, amountY)) {
             return true;
         }
-        scroll(amount * 30);
+        scroll(amountY * 30);
         return true;
     }
 

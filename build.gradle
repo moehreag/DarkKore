@@ -1,15 +1,16 @@
 plugins {
-    id 'fabric-loom' version '1.2-SNAPSHOT'
+    id 'fabric-loom' version '1.8-SNAPSHOT'
     id 'maven-publish'
-    id "io.freefair.lombok" version "8.0.1"
+    id "io.freefair.lombok" version "8.10.2"
 }
 
-apply from: 'https://raw.githubusercontent.com/DarkKronicle/GradleScripts/main/gradle/publish.gradle'
+//apply from: 'https://raw.githubusercontent.com/DarkKronicle/GradleScripts/main/gradle/publish.gradle'
 
 version = "${project.mod_version}-${project.minecraft_version}"
 group = project.maven_group
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven { url 'https://jitpack.io' }
     maven {
@@ -17,6 +18,7 @@ repositories {
         url = 'https://maven.ladysnake.org/releases'
         content {
             includeGroup 'io.github.ladysnake'
+            includeGroup 'org.ladysnake'
             includeGroupByRegex 'io\\.github\\.onyxstudios.*'
         }
     }
@@ -31,10 +33,10 @@ dependencies {
     implementation "com.electronwill.night-config:toml:${project.night_config_version}"
     implementation "com.electronwill.night-config:json:${project.night_config_version}"
 
-    implementation "com.github.DarkKronicle.Konstruct:addons:${project.konstruct_version}"
-    implementation "com.github.DarkKronicle.Konstruct:core:${project.konstruct_version}"
+    implementation "io.github.darkkronicle.Konstruct:addons:${project.konstruct_version}"
+    implementation "io.github.darkkronicle.Konstruct:core:${project.konstruct_version}"
 
-    modImplementation ("io.github.ladysnake:satin:${satin_version}"){
+    modImplementation ("org.ladysnake:satin:${satin_version}"){
         exclude group: "net.fabricmc.fabric-api"
     }
 
@@ -42,14 +44,14 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 
-    include "com.github.DarkKronicle.Konstruct:addons:${project.konstruct_version}"
-    include "com.github.DarkKronicle.Konstruct:core:${project.konstruct_version}"
+    include "io.github.darkkronicle.Konstruct:addons:${project.konstruct_version}"
+    include "io.github.darkkronicle.Konstruct:core:${project.konstruct_version}"
 
     include "com.electronwill.night-config:toml:${project.night_config_version}"
     include "com.electronwill.night-config:json:${project.night_config_version}"
     include "com.electronwill.night-config:core:${project.night_config_version}"
 
-    modCompileOnly "com.terraformersmc:modmenu:${project.mod_menu_version}"
+    modCompileOnly modLocalRuntime("com.terraformersmc:modmenu:${project.mod_menu_version}")
 }
 
 processResources {

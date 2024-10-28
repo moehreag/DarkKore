@@ -1,6 +1,6 @@
 package io.github.darkkronicle.darkkore.config.options;
 
-import io.github.darkkronicle.Konstruct.reader.builder.NodeBuilder;
+import io.github.darkkronicle.konstruct.reader.builder.NodeBuilder;
 import lombok.Getter;
 import lombok.Setter;
 

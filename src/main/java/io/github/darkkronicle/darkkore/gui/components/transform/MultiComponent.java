@@ -171,9 +171,9 @@ public class MultiComponent extends BasicComponent {
 
     /** {@inheritDoc} */
     @Override
-    public boolean mouseScrolled(int x, int y, int mouseX, int mouseY, double amount) {
+    public boolean mouseScrolled(int x, int y, int mouseX, int mouseY, double amountX, double amountY) {
         if (hoveredComponent != null) {
-            return hoveredComponent.mouseScrolled(x, y, mouseX, mouseY, amount);
+            return hoveredComponent.mouseScrolled(x, y, mouseX, mouseY, amountX, amountY);
         }
         return false;
     }

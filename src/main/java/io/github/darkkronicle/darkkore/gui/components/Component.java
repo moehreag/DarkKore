@@ -85,11 +85,12 @@ public interface Component {
      * @param y The y value where the component should render
      * @param mouseX The x value of the mouse
      * @param mouseY The y value of the mouse
-     * @param amount The amount of scroll
+     * @param amountX The amount of scroll in x direction
+     * @param amountY The amount of scroll in y direction
      * @return True if this should stop other components from responding. (Basically if it successfully was processed
      * and was a valid action)
      */
-    default boolean mouseScrolled(int x, int y, int mouseX, int mouseY, double amount) {
+    default boolean mouseScrolled(int x, int y, int mouseX, int mouseY, double amountX, double amountY) {
         return false;
     }
 

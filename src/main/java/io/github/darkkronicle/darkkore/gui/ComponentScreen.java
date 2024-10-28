@@ -58,7 +58,7 @@ public abstract class ComponentScreen extends Screen {
         if (client.world != null) {
             RenderUtil.drawRectangle(context, 0, 0, this.width, this.height, backgroundColor);
         } else {
-            renderBackgroundTexture(context);
+            renderDarkening(context);
         }
         renderComponents(context, mouseX, mouseY);
     }
@@ -77,10 +77,10 @@ public abstract class ComponentScreen extends Screen {
     }
 
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double amount) {
+    public boolean mouseScrolled(double mouseX, double mouseY, double amountX, double amountY) {
         for (Component component : components) {
             if (component.isHovered()) {
-                return component.mouseScrolled(0, 0, (int) mouseX, (int) mouseY, amount);
+                return component.mouseScrolled(0, 0, (int) mouseX, (int) mouseY, amountX, amountY);
             }
         }
         return false;

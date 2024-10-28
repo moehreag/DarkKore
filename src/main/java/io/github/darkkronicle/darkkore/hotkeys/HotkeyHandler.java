@@ -33,7 +33,7 @@ public class HotkeyHandler implements InputEvent {
     private final List<Integer> keysPressed = new ArrayList<>();
 
     public boolean contains(String modId, String name) {
-        return hotkeys.containsKey(new Identifier(modId, name));
+        return hotkeys.containsKey(Identifier.of(modId, name));
     }
 
     /**
@@ -47,7 +47,7 @@ public class HotkeyHandler implements InputEvent {
     }
 
     public Supplier<List<Hotkey>> get(String modId, String name) {
-        return hotkeys.get(new Identifier(modId, name));
+        return hotkeys.get(Identifier.of(modId, name));
     }
 
     /**
@@ -58,12 +58,12 @@ public class HotkeyHandler implements InputEvent {
      * @param hotkeySupplier A supplier
      */
     public void add(String modId, String name, Supplier<List<Hotkey>> hotkeySupplier) {
-        hotkeys.put(new Identifier(modId, name), hotkeySupplier);
+        hotkeys.put(Identifier.of(modId, name), hotkeySupplier);
         rebuildHotkeys();
     }
 
     public void remove(String modId, String name) {
-        hotkeys.remove(new Identifier(modId, name));
+        hotkeys.remove(Identifier.of(modId, name));
         rebuildHotkeys();
     }
 
@@ -90,11 +90,11 @@ public class HotkeyHandler implements InputEvent {
         if (settings.getCheck() != null && !settings.getCheck().check(context)) {
             return false;
         }
-        if (settings.isExclusive() && (hotkey.getKeys().size() != keysPressed.size() && !hotkey.getKeys().containsAll(keysPressed))) {
+        if (settings.isExclusive() && (hotkey.getKeys().size() != keysPressed.size() && !new HashSet<>(hotkey.getKeys()).containsAll(keysPressed))) {
             return false;
         }
         return (settings.isOrdered() && Collections.indexOfSubList(keysPressed, hotkey.getKeys()) >= 0) || (
-                !settings.isOrdered() && keysPressed.containsAll(hotkey.getKeys())
+				!settings.isOrdered() && new HashSet<>(keysPressed).containsAll(hotkey.getKeys())
         );
     }
 
